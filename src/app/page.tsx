@@ -10,7 +10,7 @@ import { SchemaMarkup } from "@/components/sections/SchemaMarkup";
 import { Socials } from "@/components/sections/Socials";
 import { Links } from "@/components/sections/Links";
 import { Performance } from "@/components/sections/Performance";
-import { LocalSEO } from "@/components/sections/LocalSEO";
+// import { LocalSEO } from "@/components/sections/LocalSEO";
 import { KeywordAnalysis } from "@/components/sections/KeywordAnalysis";
 import { TitleAnalysis } from "@/components/sections/TitleAnalysis";
 import { Spinner } from "@/components/ui/Spinner";
@@ -63,15 +63,15 @@ interface SEOResult {
   schemaTypes: string[];
 }
 
-interface GoogleBusinessProfile {
-  exists: boolean;
-  isComplete: boolean;
-  missingElements: string[];
-}
+// interface GoogleBusinessProfile {
+//   exists: boolean;
+//   isComplete: boolean;
+//   missingElements: string[];
+// }
 
 interface Results {
   seoResults: SEOResult[];
-  googleBusinessProfile: GoogleBusinessProfile;
+  // googleBusinessProfile: GoogleBusinessProfile;
 }
 
 export default function Home() {
@@ -439,9 +439,9 @@ export default function Home() {
                     results.seoResults.find((r) => r.url === selectedUrl)!
                   }
                 />
-                <LocalSEO
+                {/* <LocalSEO
                   googleBusinessProfile={results.googleBusinessProfile}
-                />
+                /> */}
               </>
             )}
           </div>
