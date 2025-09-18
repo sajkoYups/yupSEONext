@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "@/lib/config";
 import { OnPageSEO } from "@/components/sections/OnPageSEO";
+import { TechnicalSEO } from "@/components/sections/TechnicalSEO";
+import { ContentQuality } from "@/components/sections/ContentQuality";
+import { SchemaMarkup } from "@/components/sections/SchemaMarkup";
 import { Socials } from "@/components/sections/Socials";
 import { Links } from "@/components/sections/Links";
 import { Performance } from "@/components/sections/Performance";
@@ -13,10 +16,7 @@ import { TitleAnalysis } from "@/components/sections/TitleAnalysis";
 import { Spinner } from "@/components/ui/Spinner";
 import { DescriptionModal } from "@/components/ui/DescriptionModal";
 import {
-  Info,
-  Download,
   Search,
-  Settings,
   MapPin,
   Building,
 } from "lucide-react";
@@ -193,7 +193,7 @@ export default function Home() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <Search className="h-8 w-8 text-blue-600 mr-3" />
-              <h1 className="text-2xl font-bold text-gray-900">yupSEO</h1>
+              <h1 className="text-2xl font-bold text-gray-900">AI SEO Optimizer</h1>
             </div>
             {/* {results && (
               <button
@@ -227,7 +227,7 @@ export default function Home() {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="Enter website URL (e.g., example.com)"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                   required
                 />
               </div>
@@ -248,7 +248,7 @@ export default function Home() {
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     placeholder="Enter company name"
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                   />
                 </div>
               </div>
@@ -265,7 +265,7 @@ export default function Home() {
                   id="maxDepth"
                   value={maxDepth}
                   onChange={(e) => setMaxDepth(Number(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                 >
                   <option value={1}>1 page</option>
                   <option value={2}>2 pages</option>
@@ -291,7 +291,7 @@ export default function Home() {
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Enter location"
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                   />
                 </div>
               </div>
@@ -313,7 +313,7 @@ export default function Home() {
                   onChange={handleKeywordInput}
                   onKeyPress={handleKeyPress}
                   placeholder="Add keywords"
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                 />
                 <button
                   type="button"
@@ -379,7 +379,7 @@ export default function Home() {
                 <select
                   value={selectedUrl || ""}
                   onChange={(e) => setSelectedUrl(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                 >
                   {results.seoResults.map((result, index) => (
                     <option key={index} value={result.url}>
@@ -398,6 +398,21 @@ export default function Home() {
                     results.seoResults.find((r) => r.url === selectedUrl)!
                   }
                   setModalInfo={setModalInfo}
+                />
+                <TechnicalSEO
+                  results={
+                    results.seoResults.find((r) => r.url === selectedUrl)!
+                  }
+                />
+                <ContentQuality
+                  results={
+                    results.seoResults.find((r) => r.url === selectedUrl)!
+                  }
+                />
+                <SchemaMarkup
+                  results={
+                    results.seoResults.find((r) => r.url === selectedUrl)!
+                  }
                 />
                 <TitleAnalysis
                   results={

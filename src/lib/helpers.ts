@@ -1,5 +1,21 @@
-export const calculateGrade = (result: any) => {
-  const grades: any = {};
+interface SEOResult {
+  isTitleUnique: boolean;
+  metaDescriptionStatus: string;
+  h1Feedback: string;
+  loadTimeFeedback: string;
+  internalPageLinksCount: number;
+}
+
+interface Grades {
+  title: string;
+  metaDescription: string;
+  headings: string;
+  pageLoadSpeed: string;
+  internalLinks: string;
+}
+
+export const calculateGrade = (result: SEOResult): Grades => {
+  const grades: Grades = {} as Grades;
 
   grades.title = result.isTitleUnique ? "A" : "C";
   grades.metaDescription =

@@ -102,4 +102,59 @@ export const SEO_DESCRIPTIONS = {
       "Ensure canonical points to the correct page",
     ],
   },
+  "SSL Certificate": {
+    title: "SSL Certificate Analysis",
+    description: "SSL certificates encrypt data between your website and users, providing security and trust signals to search engines.",
+    improvements: [
+      "Install an SSL certificate if missing",
+      "Ensure certificate is valid and not expired",
+      "Redirect all HTTP traffic to HTTPS",
+      "Update internal links to use HTTPS",
+      "Check for mixed content warnings",
+    ],
+  },
+  "Robots.txt": {
+    title: "Robots.txt File Analysis",
+    description: "The robots.txt file tells search engine crawlers which pages they can or cannot access on your site.",
+    improvements: [
+      "Create a robots.txt file at your domain root",
+      "Allow important pages to be crawled",
+      "Block unnecessary pages (admin, private areas)",
+      "Include your XML sitemap location",
+      "Test with Google Search Console",
+    ],
+  },
+  "Schema Markup": {
+    title: "Schema Markup Implementation",
+    description: "Structured data markup helps search engines understand your content better and can enhance search results with rich snippets.",
+    improvements: [
+      "Add relevant schema types for your content",
+      "Implement Organization schema for business info",
+      "Add Product schema for e-commerce items",
+      "Use Article schema for blog posts",
+      "Test with Google's Rich Results Test tool",
+    ],
+  },
+  "Content Length": {
+    title: "Content Length Analysis",
+    description: "Content length affects SEO rankings. Pages with substantial, valuable content tend to perform better in search results.",
+    improvements: [
+      "Aim for at least 300 words for most pages",
+      "Create comprehensive, in-depth content",
+      "Focus on quality over quantity",
+      "Break up long content with headings",
+      "Include relevant keywords naturally",
+    ],
+  },
+  "Technical SEO": {
+    title: "Technical SEO Overview",
+    description: "Technical SEO ensures search engines can crawl, index, and understand your website effectively.",
+    improvements: [
+      "Fix all technical issues identified",
+      "Implement proper URL structure",
+      "Optimize site speed and performance",
+      "Ensure mobile-friendliness",
+      "Set up proper redirects",
+    ],
+  },
 };
