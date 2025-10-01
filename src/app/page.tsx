@@ -193,7 +193,10 @@ export default function Home() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <Search className="h-8 w-8 text-blue-600 mr-3" />
+              <div className="flex flex-col">
               <h1 className="text-2xl font-bold text-gray-900">AI SEO Optimizer</h1>
+              <p className="text-sm text-gray-500">Enterprise SEO Analysis for your website</p>
+              </div>
             </div>
             {/* {results && (
               <button
