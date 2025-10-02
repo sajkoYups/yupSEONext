@@ -15,10 +15,12 @@ import { KeywordAnalysis } from "@/components/sections/KeywordAnalysis";
 import { TitleAnalysis } from "@/components/sections/TitleAnalysis";
 import { Spinner } from "@/components/ui/Spinner";
 import { DescriptionModal } from "@/components/ui/DescriptionModal";
+import { ShareModal } from "@/components/ui/ShareModal";
 import {
   Search,
   MapPin,
   Building,
+  Share2,
 } from "lucide-react";
 
 interface SEOResult {
@@ -81,6 +83,7 @@ export default function Home() {
     description: "",
     improvements: [] as string[],
   });
+  const [shareModalOpen, setShareModalOpen] = useState(false);
   const [url, setUrl] = useState("");
   const [maxDepth, setMaxDepth] = useState(2);
   const [keywordInput, setKeywordInput] = useState("");
@@ -373,6 +376,32 @@ export default function Home() {
         {/* Results */}
         {results && (
           <div className="space-y-8">
+            {/* Share Results Button */}
+            <div className="bg-white rounded-lg shadow-sm border p-4">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center">
+                  <div className="bg-blue-100 p-3 rounded-full mr-4">
+                    <Share2 className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Share Your Results
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Create a shareable link to send these results to clients or team members
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShareModalOpen(true)}
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 font-medium whitespace-nowrap transition-colors"
+                >
+                  <Share2 className="h-5 w-5 mr-2" />
+                  Share Results
+                </button>
+              </div>
+            </div>
+
             {/* URL Selector */}
             {results.seoResults.length > 1 && (
               <div className="bg-white rounded-lg shadow-sm border p-4">
@@ -459,6 +488,16 @@ export default function Home() {
           title={modalInfo.title}
           description={modalInfo.description}
           improvements={modalInfo.improvements}
+        />
+      )}
+
+      {/* Share Modal */}
+      {results && (
+        <ShareModal
+          isOpen={shareModalOpen}
+          onClose={() => setShareModalOpen(false)}
+          targetUrl={results.seoResults[0]?.url || url}
+          results={results}
         />
       )}
     </div>
