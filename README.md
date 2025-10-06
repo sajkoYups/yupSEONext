@@ -10,6 +10,7 @@ A modern, performant SEO analysis tool built with Next.js 14, TypeScript, and Ta
 - **Link Analysis**: Check internal links, section links, and broken links
 - **Social Media Integration**: Analyze social media presence
 - **Local SEO**: Google Business Profile analysis
+- **🔗 Shareable Links**: Create time-limited shareable URLs for audit results (NEW!)
 - **PDF Export**: Generate detailed SEO reports
 - **Modern UI**: Clean, responsive design with Tailwind CSS
 - **TypeScript**: Full type safety for better development experience
@@ -48,15 +49,13 @@ npm install
 
 3. Set up environment variables:
 
+Create a `.env.local` file in the project root:
+
 ```bash
-cp .env.example .env.local
+echo "NEXT_PUBLIC_API_URL=http://localhost:5001" > .env.local
 ```
 
-Add your API URL:
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:5001
-```
+For production deployment, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 4. Run the development server:
 
@@ -74,18 +73,39 @@ npm run dev
 4. **Add Keywords**: Enter target keywords for analysis
 5. **Add Location**: Optional location for local SEO analysis
 6. **Click Analyze**: The tool will crawl the website and generate a comprehensive SEO report
-7. **Export PDF**: Download a detailed PDF report
+7. **Share Results**: Create a shareable link to send results to clients or team members
+8. **Export PDF**: Download a detailed PDF report
+
+### 🔗 Shareable Links Feature
+
+After completing an SEO audit, you can create shareable links:
+
+- Click "Share Results" button
+- Choose expiration period (7, 14, 30, or 90 days)
+- Copy the generated link
+- Share with anyone - no login required!
+- Track view counts
+
+Shared links display at `/shared/[shareId]` with all audit results and metadata.
+
+For more details, see [SHARE_FEATURE.md](./SHARE_FEATURE.md)
 
 ## Project Structure
 
 ```
 src/
 ├── app/                 # Next.js App Router pages
-│   └── page.tsx        # Main application page
+│   ├── page.tsx        # Main application page
+│   └── shared/         # Shared results viewer
+│       └── [shareId]/  # Dynamic route for shared links
 ├── components/         # React components
 │   ├── sections/       # Analysis section components
 │   └── ui/            # Reusable UI components
+│       ├── ShareModal.tsx      # Share link modal
+│       └── ...
 ├── lib/               # Utilities and configurations
+│   ├── api/           # API integration
+│   │   └── share.ts   # Share link API functions
 │   ├── config.ts      # API configuration
 │   ├── constants.ts   # SEO descriptions and constants
 │   └── helpers.ts     # Grading and utility functions
@@ -93,7 +113,18 @@ src/
 
 ## API Integration
 
-This tool integrates with the yupSEO Node.js backend API. Make sure your backend server is running on the configured port (default: 5001).
+This tool integrates with the yupSEO Node.js backend API.
+
+**Backend Endpoints Used:**
+- `POST /crawl` - Analyze website SEO
+- `POST /share-link` - Create shareable link
+- `GET /share-link/:shareId` - Fetch shared results
+- `POST /pdf/export` - Generate PDF report
+
+**Local Development:** `http://localhost:5001`  
+**Production:** `https://yupseonode.onrender.com`
+
+Make sure your backend server is running for local development.
 
 ## Development
 
@@ -113,13 +144,20 @@ This tool integrates with the yupSEO Node.js backend API. Make sure your backend
 
 ## Deployment
 
-The application can be deployed to Vercel, Netlify, or any other Next.js-compatible hosting platform.
+The application can be deployed to Vercel, Netlify, Render, or any other Next.js-compatible hosting platform.
 
-### Vercel Deployment
+**📖 For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
+
+### Quick Deploy to Vercel
 
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Deploy automatically
+3. Add environment variable:
+   - **Name**: `NEXT_PUBLIC_API_URL`
+   - **Value**: `https://yupseonode.onrender.com`
+4. Deploy!
+
+The app will automatically use the correct backend URL based on the environment.
 
 ## Contributing
 
