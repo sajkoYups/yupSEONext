@@ -143,7 +143,7 @@ export function TechnicalSEO({ results }: TechnicalSEOProps) {
               <li>• Schema markup missing - implement structured data for better search results</li>
             )}
             {!results.hasLangAttribute && (
-              <li>• Language attribute missing - add lang="en" (or appropriate language) to html tag</li>
+              <li>• Language attribute missing - add lang=&quot;en&quot; (or appropriate language) to html tag</li>
             )}
           </ul>
         </div>

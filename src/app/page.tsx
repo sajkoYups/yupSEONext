@@ -157,6 +157,8 @@ export default function Home() {
     }
   };
 
+  // Disabled PDF export for now
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const exportToPDF = async () => {
     if (!results) return;
 

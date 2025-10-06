@@ -104,7 +104,7 @@ export function SchemaMarkup({ results }: SchemaMarkupProps) {
               {!results.schemaTypes?.includes('LocalBusiness') && (
                 <li>• Add LocalBusiness schema if you serve local customers</li>
               )}
-              <li>• Test your schema with Google's Rich Results Test tool</li>
+              <li>• Test your schema with Google&apos;s Rich Results Test tool</li>
               <li>• Monitor schema performance in Google Search Console</li>
             </>
           )}

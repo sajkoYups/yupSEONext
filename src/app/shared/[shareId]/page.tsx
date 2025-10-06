@@ -53,18 +53,6 @@ export default function SharedResultsPage() {
   );
   const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (shareId) {
-      fetchSharedResults();
-    }
-  }, [shareId]);
-
-  useEffect(() => {
-    if (sharedData?.results?.seoResults && sharedData.results.seoResults.length > 0) {
-      setSelectedUrl(sharedData.results.seoResults[0].url);
-    }
-  }, [sharedData]);
-
   const fetchSharedResults = async () => {
     setLoading(true);
     setError({ type: null, message: "" });
@@ -85,6 +73,19 @@ export default function SharedResultsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (shareId) {
+      fetchSharedResults();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shareId]);
+
+  useEffect(() => {
+    if (sharedData?.results?.seoResults && sharedData.results.seoResults.length > 0) {
+      setSelectedUrl(sharedData.results.seoResults[0].url);
+    }
+  }, [sharedData]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
