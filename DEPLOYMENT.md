@@ -164,7 +164,7 @@ NEXT_PUBLIC_API_URL=https://yupseonode.onrender.com
 ```bash
 npm run dev
 ```
-
+Add stuff for rebuild
 ✅ Now uses production backend while developing
 
 ---
